@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css" media="all">
+body {
+  text-align: center;
+}
+  main {
+  box-shadow: 2vw 2vw 2vw 2vw grey;
+  border-radius: 2vw;
+  justify-items: center;
+  padding: 2%;
+  margin: 15%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20%;
+  background-color: lightyellow;
+  text-align: center;
+  }
+  main input {
+    border-style: solid;
+    border-color: black;
+    border-radius: 1vw;
+    margin: 2%;
+  }
+  main button {
+    padding: 1%;
+    font-weight: bold;
+    font-size: 130%;
+    background-color: black;
+    color: white;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 2vw;
+    margin-top: 3%;
+  }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <main>
+  <input type="number" placeholder="First Number..." id="one">
+  <input type="number" placeholder="Second Number..." id="two">
+  <input type="text" placeholder="Operation(+,-,*,/,^,%)" id="operation"> <br />
+  
+  <button id="btn">Enter</button>
+  <h2 id="result"></h2>
+  </main>
+  <script type="text/javascript" charset="utf-8">
+    document.getElementById("btn").addEventListener("click", function() {
+      let a = Number(document.getElementById("one").value);
+      let b = Number(document.getElementById("two").value);
+      let c = document.getElementById("operation").value;
+      
+      switch (c) {
+        case '+':
+          document.getElementById("result").textContent = `${a} + ${b} = ${a+b}`;
+          break;
+          
+        case '-':
+          document.getElementById("result").textContent = `${a} - ${b} = ${a-b}`;
+          break;
+          
+        case '*':
+          document.getElementById("result").textContent = `${a} x ${b} = ${a*b}`;
+          break;
+          
+        case '/':
+          if (b!==0) {
+          document.getElementById("result").textContent = `${a} / ${b} = ${a/b}`;
+          }
+          else {
+            document.getElementById("result").textContent = "Not Defined";
+          }
+          break;
+          
+          case '%':
+            document.getElementById("result").textContent = `${a} % ${b} = ${a%b}`;
+            break;
+            
+          case '^':
+            document.getElementById("result").textContent = `${a} ^ ${b} = ${a**b}`;
+            break;
+            
+          default:
+          document.getElementById("result").textContent = "Not Supported";
+          break;
+      }
+    });
+    
+  </script>
+</body>
+</html>
