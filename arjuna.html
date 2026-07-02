@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arjuna</title>
+  <style type="text/css" media="all">
+    body {
+      text-align: center;
+    }
+    header {
+      text-transform: uppercase;
+      margin-bottom: 10%;
+    }
+    input {
+      border-style: solid;
+      border-color: black;
+      border-radius: 2vw;
+      padding: 1%;
+      text-transform: lowercase;
+    }
+    button {
+      background-color: #0EC6FF;
+      padding: 1%;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-style: solid;
+      border-color: #0EC6FF;
+      border-radius: 2vw;
+    }
+    p {
+      text-align: left;
+      margin-left: 5%;
+      margin-right: 3%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Arjuna</h1>
+  </header>
+  <main>
+    <input type="text" id="chat" placeholder="hello brother...">
+    <button id="btn">Send</button>
+    <p id="output"></p>
+  </main>
+  
+  <script type="text/javascript" charset="utf-8">
+    let reply = {
+      "hi": "hello my brother, how are you?",
+      "fine": "wow, happy to know that",
+      "thanks": "you are welcome but no thank you and sorry between brothers.",
+    }
+    let user = document.getElementById("chat").value;
+    function response(mssg) {
+          return reply[mssg.toLowerCase().trim()] || "Sorry! I do not understand.";
+    }
+    
+    document.getElementById("btn").addEventListener("click", function() {
+      let user = document.getElementById("chat").value;
+      document.getElementById("output").innerHTML += `<p>You:  ${user}</p> <p>Arjuna:  <b>${response(user)}</b></p>`;
+      document.getElementById("chat").value = "";
+    });
+    
+    document.getElementById("chat").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        document.getElementById("btn").click();
+      }
+    });
+    
+    document.getElementById("chat").focus();
+  </script>
+</body>
+
+</html>
