@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rock Paper Scissor</title>
+  <style type="text/css" media="all">
+    body {
+      text-align: center;
+    }
+    main input {
+      border-style: solid;
+      border-color: black;
+      border-radius: 2vw;
+      padding: 1%;
+      text-transform: uppercase;
+    }
+    main button {
+      background-color: black;
+      color: white;
+      font-size: 120%;
+      border-style: solid;
+      border-color: black;
+      border-radius: 2vw;
+    }
+    main #answer {
+      box-shadow: 2px 2px 4px 4px lightgrey;
+      margin: 10%;
+      border-style: none;
+      border-radius: 2vw;
+      text-align: left;
+    }
+    main #answer p {
+      font-weight: bold;
+      margin-bottom: 5%;
+      padding: 5%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Game</h1>
+  </header>
+  <main>
+    <input type="text" name="input" id="input" placeholder="Rock, Paper or Scissor...">
+    <button id="btn">Challenge</button>
+    <div id="answer">
+    <p id="result"></p>  
+    </div>
+    
+  </main>
+  
+  <script type="text/javascript" charset="utf-8">
+    function game() {
+      let obj = ["ROCK", "PAPER", "SCISSOR"];
+      let user = document.getElementById("input").value.toUpperCase();
+      let bot = Math.floor(Math.random()*obj.length);
+      if ((user===obj[0] && bot===2) || (user===obj[1] && bot===0) || (user===obj[2] && bot===1)) {
+        document.getElementById("result").innerHTML += `You: ${user} <br />Bot: ${obj[bot]} <br />Oh! You caught me. <br /><br />`;
+      }
+      else if (user === obj[bot]) {
+        document.getElementById("result").innerHTML += `You: ${user} <br />Bot: ${obj[bot]} <br />Oh! it is a tie.<br /><br />`;
+      }
+      else {
+        document.getElementById("result").innerHTML += `You: ${user} <br />Bot: ${obj[bot]} <br />Hurray! I defeated you. <br /><br />`;
+      }
+    }
+    
+    document.getElementById("btn").addEventListener("click", function() {
+      game();
+    });
+    document.getElementById("input").addEventListener("keydown", function(e) {
+      if (e.key === 'Enter') {
+        game();
+      }
+    });
+  </script>
+</body>
+</html>
