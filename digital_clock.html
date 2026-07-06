@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>digital clock</title>
+  <style type="text/css" media="all">
+    body {
+      
+    }
+    header {
+      text-align: center;
+      text-transform: uppercase;
+    }
+    main {
+      box-shadow: 2px 2px 4px 4px lightgrey;
+      border-style: solid;
+      border-color: black;
+      border-radius: 2vw;
+      margin: 5%;
+    }
+    main #time {
+      text-align: center;
+      padding: 5%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Digital Clock</h1>
+  </header>
+  <main>
+    <h2 id="time"></h2>
+  </main>
+  
+  <script type="text/javascript" charset="utf-8">
+    function updateTime() {
+      const now = new Date();
+      let hour = now.getHours();
+      const sec = now.getSeconds();
+      const min = now.getMinutes();
+      const month = now.getMonth() + 1;
+      const year = now.getFullYear();
+      const day = now.getDate();
+      const format = (hour >= 12)?"PM":"AM";
+      hour = (hour>=13)?(hour-12):(hour);
+      document.getElementById("time").innerHTML = `Date: ${day}/${month}/${year} <br />Time: ${hour}:${min}:${sec} ${format}`;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
